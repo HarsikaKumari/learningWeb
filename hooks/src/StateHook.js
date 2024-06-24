@@ -1,20 +1,28 @@
 import React, {useState} from 'react';
 
 function StateHook() {
-  const [count, setCount] = useState(2)
+  const [state, setState] = useState({count: 0, theme:'black'});
+  const count = state.count;
+  const theme = state.theme;
+
 
   function decrementCount() {
-    setCount(prevCount => prevCount - 1)
+    setState(prevState => {
+      return { ...prevState, count: prevState.count - 1 };
+    })
   }
 
   function incrementCount() {
-    setCount(prevCount => prevCount + 1)
+    setState(prevState => {
+      return{theme:'red', count: prevState.count + 1}
+    })
   }
 
   return (
     <div>
         <button onClick = {decrementCount}> - </button>
         <span> {count} </span>
+        <span> {theme} </span>
         <button onClick = {incrementCount}> + </button>
     </div>
   )
