@@ -1,25 +1,34 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
 function EffectHook() {
+    const [resourceType, setResourceType] = useState('posts');
+    const [items, setItems] = useState([]);
 
-    const [resourceType, setResourceType] = useState('post');
-    
     console.log("render");
 
     useEffect(() => {
-        console.log("resource Type")
+        fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
+            .then(response => response.json())
+            .then(json => setItems(json))
+            .catch(() => setItems([]));
+            
     }, [resourceType]) //the second param ensure the code is executed when this is changed.
 
-  return (
-    <div>
+    return (
         <div>
-        <button onClick={()=>{ setResourceType('post')}}> posts </button>
-        <button onClick={()=>{ setResourceType('User')}}> Users </button>
-        <button onClick={()=>{ setResourceType('Comment')}}> Comments </button>
+            <div>
+                <button onClick={() => { setResourceType('posts') }}>Posts</button>
+                <button onClick={() => { setResourceType('users') }}>Users</button>
+                <button onClick={() => { setResourceType('comments') }}>Comments</button>
+            </div>
+            <h1> {resourceType} </h1>
+            {
+                items.map(item => {
+                    return <pre>{JSON.stringify(item)}</pre>
+                })
+            }
         </div>
-        <h1> {resourceType} </h1>
-    </div>
-  )
+    )
 }
 
 export default EffectHook;
