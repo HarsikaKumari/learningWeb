@@ -1,11 +1,13 @@
 // import StateHook from './StateHook';
-import EffectHook from './EffectHook.js';
+// import EffectHook from './EffectHook.js';
+import MemoHook from './MemoHook'
 
 function App() {
   return (
    <div>
     {/* <StateHook /> */}
-    {<EffectHook/>}
+    {/* {<EffectHook/>} */}
+    {<MemoHook/>}
    </div>
   );
 }
