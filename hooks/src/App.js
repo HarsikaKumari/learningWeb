@@ -1,7 +1,8 @@
 // import StateHook from './StateHook';
 // import EffectHook from './EffectHook.js';
 // import MemoHook from './MemoHook'
-import RefHook from "./RefHook";
+// import RefHook from "./RefHook";
+import ContextHook from './context/contextHook/ContextHook'
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       {/* <StateHook /> */}
       {/* {<EffectHook/>} */}
       {/* {<MemoHook/>} */}
-      {<RefHook />}
+      {/* {<RefHook />} */}
+      <ContextHook />
     </div>
   );
 }
