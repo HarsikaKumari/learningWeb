@@ -1,21 +1,13 @@
-import React, { useState, createContext } from 'react';
-import  ClassContext from './ClassContext';
+import React from 'react';
 import FunctionContext from "./FunctionContext";
-
-export const ThemeContext = createContext();
+import {ThemeProvider} from './ThemeContext'
 
 const ContextHook = () => {
-    const [theme, setTheme] = useState(true);
-    const toggleTheme = () => {
-        setTheme(prevTheme => !prevTheme);
-    }
 
     return (
-        <ThemeContext.Provider value={theme}>
-            <button onClick={toggleTheme}>Toggle Theme</button>
+        <ThemeProvider>
             <FunctionContext />
-            <ClassContext />
-        </ThemeContext.Provider>
+        </ThemeProvider>
     )
 }
 
