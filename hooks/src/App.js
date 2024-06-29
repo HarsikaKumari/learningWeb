@@ -4,7 +4,7 @@
 // import RefHook from "./RefHook";
 // import ContextHook from './context/contextHook/ContextHook'
 // import ReducerHook from "./ReducerHook";
-import ReducerHookEg from "./ReducerHookEg";
+import ReducerHookEg from "./Reducer/ReducerHookEg";
 
 function App() {
   return (
