@@ -3,7 +3,8 @@
 // import MemoHook from './MemoHook'
 // import RefHook from "./RefHook";
 // import ContextHook from './context/contextHook/ContextHook'
-import ReducerHook from "./ReducerHook";
+// import ReducerHook from "./ReducerHook";
+import ReducerHookEg from "./ReducerHookEg";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       {/* {<MemoHook/>} */}
       {/* {<RefHook />} */}
       {/* <ContextHook /> */}
-      {<ReducerHook />}
+      {/* {<ReducerHook />} */}
+      <ReducerHookEg />
     </div>
   );
 }
