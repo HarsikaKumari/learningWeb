@@ -11,7 +11,7 @@ export function useUpdateTheme() {
     return useContext(ThemeUpdateContext);
 }
 
-export function ThemeProvider({ Children }) {
+export function ThemeProvider({ children }) {
     const [theme, setTheme] = useState(true);
 
     function toggleTheme() {
@@ -21,7 +21,7 @@ export function ThemeProvider({ Children }) {
     return (
         <ThemeContext.Provider value={theme}>
             <ThemeUpdateContext.Provider value={toggleTheme}>
-                {Children}
+                {children}
             </ThemeUpdateContext.Provider>
         </ThemeContext.Provider>
     )
