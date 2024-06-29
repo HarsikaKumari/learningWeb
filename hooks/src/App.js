@@ -4,7 +4,9 @@
 // import RefHook from "./RefHook";
 // import ContextHook from './context/contextHook/ContextHook'
 // import ReducerHook from "./ReducerHook";
-import ReducerHookEg from "./Reducer/ReducerHookEg";
+// import ReducerHookEg from "./Reducer/ReducerHookEg";
+
+import CallbackHook from "./callback/CallbackHook";
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
       {/* {<RefHook />} */}
       {/* <ContextHook /> */}
       {/* {<ReducerHook />} */}
-      <ReducerHookEg />
+      {/* <ReducerHookEg /> */}
+      <CallbackHook />
     </div>
   );
 }
