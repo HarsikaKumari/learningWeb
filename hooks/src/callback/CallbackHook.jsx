@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useCallback, useState } from 'react'
 import List from './List'
 
 
@@ -11,9 +11,9 @@ const CallbackHook = () => {
         color: dark ? "#FFF" : "#333",
     }
 
-    function getItems() {
-        return [number, number + 1, number + 2]
-    }
+    const getItems = useCallback((incrementor) => {
+        return [number + incrementor, number + incrementor + 1, number + incrementor + 2]
+    }, [number])
 
     return (
         <div style={theme}>

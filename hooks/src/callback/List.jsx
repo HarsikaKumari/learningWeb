@@ -4,7 +4,7 @@ const List = ({ getItems }) => {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        setItems(getItems())
+        setItems(getItems(5))
     }, [getItems])
 
     return items.map((item) => <div key={item}>{ item }</div>);
