@@ -5,8 +5,9 @@
 // import ContextHook from './context/contextHook/ContextHook'
 // import ReducerHook from "./ReducerHook";
 // import ReducerHookEg from "./Reducer/ReducerHookEg";
+// import CallbackHook from "./callback/CallbackHook";
 
-import CallbackHook from "./callback/CallbackHook";
+import CustomHook from "./customHook/CustomHook";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       {/* <ContextHook /> */}
       {/* {<ReducerHook />} */}
       {/* <ReducerHookEg /> */}
-      <CallbackHook />
+      {/* <CallbackHook /> */}
+      <CustomHook />
     </div>
   );
 }
