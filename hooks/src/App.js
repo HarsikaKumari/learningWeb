@@ -6,8 +6,8 @@
 // import ReducerHook from "./ReducerHook";
 // import ReducerHookEg from "./Reducer/ReducerHookEg";
 // import CallbackHook from "./callback/CallbackHook";
-
-import CustomHook from "./customHook/CustomHook";
+// import CustomHook from "./customHook/CustomHook";
+import UseLayoutEffect from "./UseLayoutEffect";
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
       {/* {<ReducerHook />} */}
       {/* <ReducerHookEg /> */}
       {/* <CallbackHook /> */}
-      <CustomHook />
+      {/* <CustomHook /> */}
+      <UseLayoutEffect />
     </div>
   );
 }
