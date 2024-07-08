@@ -7,7 +7,8 @@
 // import ReducerHookEg from "./Reducer/ReducerHookEg";
 // import CallbackHook from "./callback/CallbackHook";
 // import CustomHook from "./customHook/CustomHook";
-import UseLayoutEffect from "./UseLayoutEffect";
+// import UseLayoutEffect from "./UseLayoutEffect";
+import UseTransition from "./UseTransition";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
       {/* <ReducerHookEg /> */}
       {/* <CallbackHook /> */}
       {/* <CustomHook /> */}
-      <UseLayoutEffect />
+      {/* <UseLayoutEffect /> */}
+      <UseTransition />
     </div>
   );
 }
