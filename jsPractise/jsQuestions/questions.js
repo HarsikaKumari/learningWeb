@@ -15,8 +15,14 @@ const students = [
 
 //show the detail of only those who scored more then 80 marks
 
-const result = students.filter((stu) => {
-    return stu.marks > 80;
-})
+// const result = students.filter((stu) => {
+//     return stu.marks > 80 && stu.rollNo > 5;
+// })
+
+// console.log(result);
+
+//sum of marks of all of the students
+
+const result = students.reduce((acc, current) => acc + current.marks, 0);
 
 console.log(result);
