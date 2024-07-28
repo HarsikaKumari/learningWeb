@@ -9,6 +9,14 @@ const students = [
     {name: "Sheetal", rollNo: 6, marks: 99},
 ];
 
-const names = students.map((stu) => stu.name.toUpperCase());
+// const names = students.map((stu) => stu.name.toUpperCase());
 
-console.log(names);
+// console.log(names);
+
+//show the detail of only those who scored more then 80 marks
+
+const result = students.filter((stu) => {
+    return stu.marks > 80;
+})
+
+console.log(result);
