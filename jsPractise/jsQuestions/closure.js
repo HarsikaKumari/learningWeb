@@ -12,11 +12,13 @@
 
 function makeFunction() {
     var name = "harsika";
-    function displayFun() {
-        console.log(name);
+    function displayFun(num) {
+        console.log(name, num);
     }
     return displayFun;
 }
 
-var myFun = makeFunction();
-myFun();
+// var myFun = makeFunction();
+// myFun();
+
+makeFunction()(17);
