@@ -58,7 +58,6 @@ let count = 0;
 
 /*
 question 2: write a function to do this addSix(10) : output 16
-*/
 
 function createBase(base) {
      return function addSix(num) {
@@ -68,3 +67,27 @@ function createBase(base) {
 var addSix = createBase(6);
 addSix(10);
 addSix(23);
+*/
+
+/*
+Time Optimization
+*/
+
+function find() {
+    let result = [];
+    for (let i = 0; i < 1000000; i++) {
+        result[i] = i * i;
+    }
+    return function (index) {
+        console.log(result[index]);
+    }
+}
+
+const closure = find();
+
+console.time("8");
+closure(8);
+console.timeEnd("8");
+console.time("56")
+closure(56);
+console.timeEnd("56");
