@@ -42,7 +42,8 @@ function sum(a) {
 
 console.log(sum(1)(2)(3)(4)); // 20
 */
-// question 1:
+/*
+question 1:
 let count = 0;
 (
     function printCount() {
@@ -53,4 +54,17 @@ let count = 0;
         console.log(count); //0
     }
 ) ();
+ */
 
+/*
+question 2: write a function to do this addSix(10) : output 16
+*/
+
+function createBase(base) {
+     return function addSix(num) {
+        console.log(num + base);// 16   27
+    } 
+};
+var addSix = createBase(6);
+addSix(10);
+addSix(23);
