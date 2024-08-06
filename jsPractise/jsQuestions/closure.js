@@ -25,7 +25,8 @@
 
 // closure scope chain:-
 
-// global scope
+/*
+ global scope
 const e = 10;
 function sum(a) {
     return function (b) {
@@ -40,3 +41,16 @@ function sum(a) {
 }
 
 console.log(sum(1)(2)(3)(4)); // 20
+*/
+// question 1:
+let count = 0;
+(
+    function printCount() {
+        if (count === 0) {
+            let count = 1; //shadowing
+            console.log(count); // 1
+        }
+        console.log(count); //0
+    }
+) ();
+
