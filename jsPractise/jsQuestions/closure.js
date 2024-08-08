@@ -95,7 +95,7 @@ console.timeEnd("56");
 /*
 question 4: setTimeout Output
 */
-
+/*
 function a() {
     for (var i = 0; i < 3; i++) { // can use let instead of var to get: 1 2 3
         function inner(i) {
@@ -108,3 +108,28 @@ function a() {
 }
 
 a();
+*/
+
+//closure to create a private counter
+
+function counter() {
+    var _counter = 0;
+
+    function add(increment) {
+        _counter += increment;
+    }
+
+    function retrieve() {
+        return "Counter = " + _counter;
+    }
+
+    return {
+        add,
+        retrieve,
+    };
+}
+
+const c = counter();
+c.add(4);
+c.add(5);
+console.log(c.retrieve());
