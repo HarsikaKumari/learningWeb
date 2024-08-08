@@ -110,7 +110,8 @@ function a() {
 a();
 */
 
-//closure to create a private counter
+/*
+closure to create a private counter
 
 function counter() {
     var _counter = 0;
@@ -133,3 +134,46 @@ const c = counter();
 c.add(4);
 c.add(5);
 console.log(c.retrieve());
+*/
+
+/*
+module pattern
+
+var module = (function () {
+    function privateMethod() {
+        console.log("private");
+    }
+    return {
+        publicMethod: function () {
+            console.log("Public");
+        },
+    };
+})();
+
+module.publicMethod();
+module.privateMethod();
+*/
+
+//make a function run only one time
+
+function helloW() {
+    let count = 0;
+
+    return function() {
+        if (count > 0) {
+            console.log("Already done with hello");
+        } else {
+            name = "Harsika";
+            console.log("Hello to ", name);
+        }
+        count++;
+    }
+}
+
+let isHello = helloW();
+
+isHello();
+isHello();
+isHello();
+isHello();
+isHello();
