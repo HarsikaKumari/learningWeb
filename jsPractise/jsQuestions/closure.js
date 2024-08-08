@@ -71,7 +71,6 @@ addSix(23);
 
 /*
 Time Optimization
-*/
 
 function find() {
     let result = [];
@@ -91,3 +90,21 @@ console.timeEnd("8");
 console.time("56")
 closure(56);
 console.timeEnd("56");
+*/
+
+/*
+question 4: setTimeout Output
+*/
+
+function a() {
+    for (var i = 0; i < 3; i++) { // can use let instead of var to get: 1 2 3
+        function inner(i) {
+            setTimeout(function log() {
+                console.log(i); //what is logged? // before closure: 3 3 3 after closure: 1 2 3
+            }, i * 1000);
+        }
+    }
+    inner(i);
+}
+
+a();
