@@ -1,5 +1,6 @@
+import React from "react";
 import { Header } from "./Header";
-// import { Tweet } from 'react-tweet';
+import { Tweet } from 'react-tweet';
 
 export default function page() {
   return (
@@ -8,7 +9,7 @@ export default function page() {
         <h2>Helloo!</h2>
       </Header>
       <p>Hello!! This is my web page using Next</p>
-      {/* <Tweet id="1629307668568633344" /> */}
+      <Tweet id="1629307668568633344" />
     </section>
   );
 }
