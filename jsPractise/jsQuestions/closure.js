@@ -154,7 +154,8 @@ module.publicMethod();
 module.privateMethod();
 */
 
-//make a function run only one time
+/*
+make a function run only one time
 
 function helloW() {
     let count = 0;
@@ -177,3 +178,53 @@ isHello();
 isHello();
 isHello();
 isHello();
+*/
+/*
+Polyfill of Once function
+
+function once(func, context) {
+    let ran;
+
+    return function() {
+        if (func) {
+            ran = func.apply(context || this, arguments);
+            func = null;
+        }
+        return ran;
+    };
+}
+
+const hello = once((a, b) => console.log("Hello", a, b));
+
+hello(2, 5);
+hello(4, 7);
+hello();
+ */
+
+// memoized polyfill
+function myMemoize(fn, context) {
+    const res = {};
+    return function (...args) {
+        var argsCache = JSON.stringify(args);
+        if(!res[argsCache]) {
+            res[argsCache] = fn.call(context || this, ...args);
+        } 
+        return res[argsCache];
+    }
+}
+
+const clumsyFun = (a, b) => {
+    for (let i = 1; i <= 1000000000; i++) {} 
+
+    return a * b;
+};
+
+const MemoizedClumsyFun = myMemoize(clumsyFun);
+
+console.time("First call");
+console.log(MemoizedClumsyFun(123, 3241));
+console.timeEnd("First call");
+
+console.time("Second call");
+console.log(MemoizedClumsyFun(123, 3241));
+console.timeEnd("Second call");
