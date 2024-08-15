@@ -201,7 +201,8 @@ hello(4, 7);
 hello();
  */
 
-// memoized polyfill
+/*
+memoized polyfill
 function myMemoize(fn, context) {
     const res = {};
     return function (...args) {
@@ -228,3 +229,4 @@ console.timeEnd("First call");
 console.time("Second call");
 console.log(MemoizedClumsyFun(123, 3241));
 console.timeEnd("Second call");
+*/
