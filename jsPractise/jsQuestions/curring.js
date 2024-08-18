@@ -28,7 +28,6 @@ console.log(sum(3)(5)(6));
  evaluate("multiply")(2)(3) => 5
  evaluate("divide")(2)(3) => 5
  evaluate("subtract")(2)(3) => 5
-*/
 
 function evaluate(operation) {
     return function(a) {
@@ -47,3 +46,26 @@ console.log(evaluate("multiply")(2)(3));
 console.log(evaluate("divide")(2)(3));
 console.log(evaluate("subtract")(2)(3));
 console.log(evaluate(" ")(2)(3));
+
+const num = evaluate("multiply");
+console.log(num(2)(3)); //6
+console.log(num(4)(3)); //12
+*/
+
+//infinite currying eg. sum(3)(4)(5)()...
+
+function add(a) {
+    return function (b) {
+        console.log("b = " + b);
+        console.log("a before return = " + a);
+        if(b) return add(a + b);
+        console.log("a after return = " + a);
+        return a; 
+        
+    }
+}
+console.log(add(3)(4)(5)());
+
+
+// Curring vs partial application
+
