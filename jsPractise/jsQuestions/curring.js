@@ -68,7 +68,8 @@ function add(a) {
 console.log(add(3)(4)(5)());
 */
 
-// Curring vs partial application
+/*
+Curring vs partial application
 
 function sum(a) {
     return function(b, c) {
@@ -88,4 +89,41 @@ function add(a) {
 }
 
 console.log(add(2)(3)(4));
+*/
+
+/*
+manipulating DOM
+
+function updateElementText(id) {
+    return function(content) {
+        document.querySelector("#" + id).textContent = content;
+    };
+}
+
+const updateHeader = updateElementText("Header");
+
+updateHeader("Hello World!!");
+updateHeader("Hello Sheetal!!");
+
+*/
+
+// a function curry that converts f(a, b, c) to f(a)(b)(c)
+
+function curry(fn) {
+    return function curriedFun(...args) {
+        // console.log(args.length, fn.length);  
+        if (args.length >= fn.length)
+            return fn(...args);
+        else
+            return function (...next) {
+                return curriedFun(...args, ...next);
+            };
+    };
+}
+
+const sum = (a, b, c, d) => a + b + c + d;
+
+const totalSum = curry(sum);
+
+console.log(totalSum(2)(3)(4)(5));
 
