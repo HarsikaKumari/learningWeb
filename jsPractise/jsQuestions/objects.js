@@ -54,7 +54,8 @@ const obj = {
 console.log(obj);
 */
 
-// create a function multiply(obj) that multiply all the numeric property of object by 2
+/*
+create a function multiply(obj) that multiply all the numeric property of object by 2
 
 function multiply(obj){
     for (key in obj) {
@@ -70,3 +71,19 @@ const obj = {
 }
 
 multiply(obj);
+*/
+
+const a = {};
+const b = { key: "a"};
+const c = { key: "b" };
+
+a[b] = 256; // a["[object object]"] = 123;
+a[c] = 433;// a["[object object]"] = 433;
+
+console.log(a); // it would not take a or b as a key because we have provided 'key : "a"' in a or b and it would take it as object object, it will take b as the key when we have just provided a string.
+//{[object Object]: 433}[object Object]: 433[[Prototype]]: Object
+
+
+
+console.log(a[b]); // this will print 433
+
