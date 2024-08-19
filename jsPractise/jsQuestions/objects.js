@@ -73,6 +73,7 @@ const obj = {
 multiply(obj);
 */
 
+/*
 const a = {};
 const b = { key: "a"};
 const c = { key: "b" };
@@ -83,7 +84,12 @@ a[c] = 433;// a["[object object]"] = 433;
 console.log(a); // it would not take a or b as a key because we have provided 'key : "a"' in a or b and it would take it as object object, it will take b as the key when we have just provided a string.
 //{[object Object]: 433}[object Object]: 433[[Prototype]]: Object
 
-
-
 console.log(a[b]); // this will print 433
+*/
 
+JSON.stringify(obj) // to convert the obj in string, used for storing the data in local storage as:
+localStorage.setItem(JSON.stringify(obj));
+JSON.parse(localStorage.setItem(JSON.stringify(obj))) // to get back the string in a object formate
+
+
+console.log([..."hello"]); //spread all the operator as 0:"h", 1:"e", 2:"l", 3:"l", 4:"o"
