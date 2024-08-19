@@ -52,7 +52,8 @@ console.log(num(2)(3)); //6
 console.log(num(4)(3)); //12
 */
 
-//infinite currying eg. sum(3)(4)(5)()...
+/*
+infinite currying eg. sum(3)(4)(5)()...
 
 function add(a) {
     return function (b) {
@@ -65,7 +66,26 @@ function add(a) {
     }
 }
 console.log(add(3)(4)(5)());
-
+*/
 
 // Curring vs partial application
+
+function sum(a) {
+    return function(b, c) {
+        return a + b + c;
+    } // this is partial application where the number of parameter passed must not be equal to the number of returning function the currying function has
+}
+
+const s = sum(2);
+console.log(s(3, 4));
+
+function add(a) {
+    return function(b) { 
+        return function(c) {
+            return a + b + c;
+        } // this is currying 
+    }
+}
+
+console.log(add(2)(3)(4));
 
