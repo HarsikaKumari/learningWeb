@@ -21,6 +21,7 @@ const func = (function (a) {
 console.log(func);
 */
 
+/*
 const property =  "firstName";
 const value = "Hasika";
 
@@ -37,9 +38,35 @@ const me = {
     class: "12th",
 }
 
-//access each key and value
+access each key and value
 
 for (key in me) {
     console.log(key);
     
 }
+
+const obj = {
+    a: 1,
+    b: 2,
+    a: 3,
+}
+
+console.log(obj);
+*/
+
+// create a function multiply(obj) that multiply all the numeric property of object by 2
+
+function multiply(obj){
+    for (key in obj) {
+        if (Number.isInteger(obj[key])) 
+        console.log(obj[key] * 2 );
+    }
+}
+
+const obj = {
+    a: 100,
+    b: 200,
+    title: "this is my title",
+}
+
+multiply(obj);
