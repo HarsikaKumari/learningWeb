@@ -22,9 +22,23 @@ function getItem(fruitName, favFruit, ...args) {
 console.log(getItem(["banana", "orange"], "mango", "pear"));
 */
 
+/*
 let c = {greeting: "hey"};
 let d;
 
 d = c; // we does not copy all the property in c, we just provide reference to c, so any change in c or d would affect both of the object
 c.greeting = "Hello";
 console.log(d.greeting); // hello
+*/
+
+/*
+console.log({ a: 1 } == { a: 1 }); // false
+console.log({ a: 1 } === { a: 1 }); // conditions will always return 'false' since JavaScript compares objects by reference, not value
+*/
+
+
+let person = {name: "Harsika"};
+const member = [person];
+person = null;
+
+console.log(member);
