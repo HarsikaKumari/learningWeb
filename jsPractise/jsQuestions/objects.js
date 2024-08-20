@@ -96,7 +96,7 @@ JSON.parse(localStorage.setItem(JSON.stringify(obj))) // to get back the string 
 console.log([..."hello"]); //spread all the operator as 0:"h", 1:"e", 2:"l", 3:"l", 4:"o"
 */
 
-
+/*
 const setting = {
     username: "harsika",
     level: 3,
@@ -116,6 +116,4 @@ const shape = {
 
 console.log(shape.diameter());
 console.log(shape.perimeter()); //NaN as it will refer to the outer or window object scope
-
-
-
+*/
