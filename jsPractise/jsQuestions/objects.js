@@ -87,9 +87,35 @@ console.log(a); // it would not take a or b as a key because we have provided 'k
 console.log(a[b]); // this will print 433
 */
 
+/*
 JSON.stringify(obj) // to convert the obj in string, used for storing the data in local storage as:
 localStorage.setItem(JSON.stringify(obj));
 JSON.parse(localStorage.setItem(JSON.stringify(obj))) // to get back the string in a object formate
 
 
 console.log([..."hello"]); //spread all the operator as 0:"h", 1:"e", 2:"l", 3:"l", 4:"o"
+*/
+
+
+const setting = {
+    username: "harsika",
+    level: 3,
+    height: 45,
+}
+
+const strObj = JSON.stringify(setting, ["level", "height"]); // it will stringify this two property {"level":3,"height":45}
+console.log(strObj);
+
+const shape = {
+    radius: 10,
+    diameter () {
+        return this.radius * 2;
+    },
+    perimeter: () => 2 * Math.PI * this.radius,
+}
+
+console.log(shape.diameter());
+console.log(shape.perimeter()); //NaN as it will refer to the outer or window object scope
+
+
+
