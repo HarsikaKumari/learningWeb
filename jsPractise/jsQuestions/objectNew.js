@@ -36,9 +36,22 @@ console.log({ a: 1 } == { a: 1 }); // false
 console.log({ a: 1 } === { a: 1 }); // conditions will always return 'false' since JavaScript compares objects by reference, not value
 */
 
-
+/*
 let person = {name: "Harsika"};
 const member = [person];
 person = null;
 
 console.log(member);
+*/
+
+const value = { number: 10 };
+
+function multiply( x = {...value}) {
+    console.log(x.number *= 2);
+    
+}
+
+multiply();
+multiply();
+multiply(value);
+multiply(value);
