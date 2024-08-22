@@ -46,6 +46,7 @@ console.log(User); //user { name: 'harsika' } name:"harsika" [[Prototype]]:Objec
 User.getName(); //harsika
 */
 
+/*
 const user = {
     name: "harsika",
     getName() {
@@ -55,4 +56,19 @@ const user = {
 }
 
 console.log(user.getName()); //harsika
+*/
+
+function makeUser() {
+    return {
+        name: "harsika",
+        // ref: this, make ref a function so, that it can point to the makeUser function
+        ref() {
+            return this;
+        }
+    }
+}
+
+const user = makeUser();
+// console.log(user.ref); //returns the window object 
+console.log(user.ref()); // will return an object as name and a function as it's property
 
