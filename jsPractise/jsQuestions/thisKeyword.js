@@ -12,7 +12,6 @@ let user = {
     }
 }
 user.childObj.getDetail();
-*/
 
 let user = {
     name: "harsika",
@@ -25,3 +24,22 @@ let user = {
 };
 
 user.getDetail();
+*/
+
+// this inside a class
+
+class user {
+    constructor(n) {
+        this.name = n;
+    }
+
+    getName () {
+        console.log(this.name);
+    }
+}
+
+const User = new user("harsika");
+
+console.log(User); //user { name: 'harsika' } name:"harsika" [[Prototype]]:Object
+
+User.getName(); //harsika
