@@ -26,6 +26,7 @@ let user = {
 user.getDetail();
 */
 
+/*
 // this inside a class
 
 class user {
@@ -43,3 +44,15 @@ const User = new user("harsika");
 console.log(User); //user { name: 'harsika' } name:"harsika" [[Prototype]]:Object
 
 User.getName(); //harsika
+*/
+
+const user = {
+    name: "harsika",
+    getName() {
+        const name = "harsika!";
+        return this.name;
+    }
+}
+
+console.log(user.getName()); //harsika
+
