@@ -44,6 +44,7 @@ person = null;
 console.log(member);
 */
 
+/*
 const value = { number: 10 };
 
 function multiply( x = {...value}) {
@@ -55,3 +56,27 @@ multiply();
 multiply();
 multiply(value);
 multiply(value);
+*/
+
+/* 
+difference between a shallow copy and a deep copy:-
+when we copy a object and the copied have a reference to the original copy it's shallow copy
+and when we copy the object completely with no reference to the original then it's deep copy
+let'c make a deep copy in 3 ways 
+1st: */ 
+let user = {
+    name: "harsika",
+    age: 22,
+}
+
+// let copyObj = Object.assign({}, user); 
+// 2nd way:
+
+// let copyObj = JSON.parse(JSON.stringify(user));
+//3rd way:
+
+let copyObj = { ...user }
+copyObj.name = "Sheetal";
+
+console.log(user, copyObj);
+
