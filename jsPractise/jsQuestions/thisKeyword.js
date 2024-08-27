@@ -121,6 +121,7 @@ console.log(calculator.sum());
 console.log(calculator.multiply())
 */
 
+/*
 var length = 4;
 
 function callback() {
@@ -137,4 +138,32 @@ const obj = {
 };
 
 obj.method(callback, 3, 4);
+*/
 
+//calc().add(10).subtract(5).multiply(20).divide(2).getResult().In this case, the output should be 50.
+
+const calc = {
+    total: 0,
+    add(a) {
+        this.total += a;
+        return this;
+    },
+    subtract(a) {
+        this.total -= a;
+        return this;
+    },
+    multiply(a) {
+        this.total *= a;
+        return this;
+    },
+    divide(a) {
+        this.total /= a;
+        return this;
+    },
+    getResult() {
+        return this.total;
+    },
+};
+
+const result = calc.add(10).subtract(5).multiply(20).divide(2).getResult(); // 50
+console.log(result);
