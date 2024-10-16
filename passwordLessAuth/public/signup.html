@@ -11,7 +11,7 @@
     <form id="register-form">
         <input type="text" name="username" id="username" placeholder="username">
         <input type="password" name="password" id="password" placeholder="password">
-        <input type="button" value="Register" name="submit">
+        <input type="submit" value="Register" name="submit">
     </form>
 
     <script>
@@ -25,17 +25,17 @@
             const response = await fetch('/register', {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     username: usernameField.value,
                     password: passwordField.value
                 })
             })
-            const result = response.json();
-            const { id } = result;
+            const result = await response.json();
+            const { Id } = result;
 
-            window.location.replace(`http://localhost:8000/profile?userID=${id}`)
+            window.location.replace(`http://localhost:3000/profile.html?userId=${Id}`)
         })
     </script>
 </body>
