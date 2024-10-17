@@ -35,8 +35,17 @@
             const challengeResult = await response.json();
             const { options } = challengeResult //server side challenge
             
-            const authenticationResult = await startRegistration(options)
+            const authenticationResult = await startRegistration({optionsJSON: options})
             console.log(authenticationResult);
+
+            await fetch("/register-verification", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ userId, cred: authenticationResult })
+            })
+
         })
     </script>
 </body>

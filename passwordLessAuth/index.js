@@ -1,8 +1,8 @@
-import express from 'express';
+import express, { response } from 'express';
 import crypto from "node:crypto";
 import {
     generateRegistrationOptions,
-    // verifyRegistrationResponse
+    verifyRegistrationResponse
 } from '@simplewebauthn/server';
 
 if (!globalThis.crypto) {
@@ -37,26 +37,48 @@ app.post("/register", (req, res) => {
 app.post("/register-challenge", async (req, res) => {
     const { userId } = req.body;
 
-    // console.log(req.body);
-// })
-// app.post("/register-challenge", async (error, req, res, next) => {
-//     const { userId } = req.body;
-//     console.log(userId);
-    
-
-    if (!userStore[userId]) return res.status(404).json({ error: "user not found!" })
+    if (!userStore[userId]) {
+        console.log("user not found!");
+        
+        return res.status(404).json({ error: "user not found!" })
+    }
 
     const user = userStore[userId];
     const challengePayload = await generateRegistrationOptions({
-        rpId: 'localhost',
+        rpID: 'localhost',
         rpName: 'My localhost',
-        username: user.username,
+        userName: user.username,
     })
-    
-    console.log(challengePayload);
     
     challengeStore[userId] = challengePayload.challenge
     return res.json({ options: challengePayload })
+})
+
+app.post('/register-verification', async(req, res) => {
+    const { userId, cred } = req.body;
+
+    if (!userStore[userId]) {
+        console.log("user not found!");
+
+        return res.status(404).json({ error: "user not found!" })
+    }
+
+    const user = userStore[userId];
+    const challenge = challengeStore[userId]
+
+    const verificationResult = await verifyRegistrationResponse({
+        expectedChallenge: challenge,
+        expectedOrigin: "http://localhost:3000",
+        expectedRPID: "localhost",
+        response: cred,
+    })
+    if (!verificationResult.verified) {
+        console.log("user not verified!");
+
+        return res.status(404).json({ error: "user not verified!" })
+    }
+    userStore[userId].passkey = verificationResult.registrationInfo;
+    return res.json({ verified: true })
 })
 
 app.listen(PORT, () => console.log(`server running on port: ${PORT}`))
