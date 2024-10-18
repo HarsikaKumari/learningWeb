@@ -2,7 +2,8 @@ import express, { response } from 'express';
 import crypto from "node:crypto";
 import {
     generateRegistrationOptions,
-    verifyRegistrationResponse
+    verifyRegistrationResponse,
+    generateAuthenticationOptions
 } from '@simplewebauthn/server';
 
 if (!globalThis.crypto) {
@@ -79,6 +80,22 @@ app.post('/register-verification', async(req, res) => {
     }
     userStore[userId].passkey = verificationResult.registrationInfo;
     return res.json({ verified: true })
+})
+
+app.post("/login-challenge", async (req, res) => {
+    const { userId } = req.body;
+
+    if (!userStore[userId]) {
+        console.log("user not found!");
+
+        return res.status(202).json({ error: "user not found!" })
+    }
+    const opt = await generateAuthenticationOptions({
+        rpID: "localhost",
+    })
+
+    challengeStore[userId] = opt.challenge;
+    return res.json({ options: opt })
 })
 
 app.listen(PORT, () => console.log(`server running on port: ${PORT}`))
