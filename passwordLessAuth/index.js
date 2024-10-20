@@ -3,7 +3,8 @@ import crypto from "node:crypto";
 import {
     generateRegistrationOptions,
     verifyRegistrationResponse,
-    generateAuthenticationOptions
+    generateAuthenticationOptions,
+    verifyAuthenticationResponse
 } from '@simplewebauthn/server';
 
 if (!globalThis.crypto) {
@@ -40,7 +41,7 @@ app.post("/register-challenge", async (req, res) => {
 
     if (!userStore[userId]) {
         console.log("user not found!");
-        
+
         return res.status(404).json({ error: "user not found!" })
     }
 
@@ -50,12 +51,12 @@ app.post("/register-challenge", async (req, res) => {
         rpName: 'My localhost',
         userName: user.username,
     })
-    
+
     challengeStore[userId] = challengePayload.challenge
     return res.json({ options: challengePayload })
 })
 
-app.post('/register-verification', async(req, res) => {
+app.post('/register-verification', async (req, res) => {
     const { userId, cred } = req.body;
 
     if (!userStore[userId]) {
@@ -96,6 +97,37 @@ app.post("/login-challenge", async (req, res) => {
 
     challengeStore[userId] = opt.challenge;
     return res.json({ options: opt })
+})
+
+app.post('/login-verification', async (req, res) => {
+    const { userId, cred } = req.body;
+    console.log(cred);
+    
+
+    if (!userStore[userId]) {
+        console.log("user not found!");
+
+        return res.status(202).json({ error: "user not found!" })
+    }
+
+    const user = userStore[userId];
+    const challenge = challengeStore[userId]
+
+    const result = await verifyAuthenticationResponse({
+        expectedChallenge: challenge,
+        expectedOrigin: "http://localhost:3000",
+        expectedRPID: "localhost",
+        response: cred,
+        authenticator: user.passkey
+    })
+    if (!result.verified) {
+        console.log("something went wrong!");
+
+        return res.status(202).json({ error: "something went wrong!" })
+    }
+
+    //login the user
+    return res.json({ success: true, userId })
 })
 
 app.listen(PORT, () => console.log(`server running on port: ${PORT}`))
