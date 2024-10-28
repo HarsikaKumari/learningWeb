@@ -14,9 +14,8 @@ export class NotesService {
   create(createNoteDto: CreateNoteDto) : Promise<Note> {
     let note: Note = new Note();
     note.id = createNoteDto.id;
-    note.title = createNoteDto.title;
-    note.description = createNoteDto.description;
-    note.isActive = createNoteDto.isActive;
+    note.emailAddress = createNoteDto.emailAddress;
+    note.password = createNoteDto.password;
 
     return this.noteRepository.save(note);
   }
@@ -25,22 +24,20 @@ export class NotesService {
     return this.noteRepository.find();
   }
 
-  findOne(id: number): Promise<Note> {
+  findOne(id: string): Promise<Note> {
     return this.noteRepository.findOne({where: {id}});
   }
 
-  update(id: number, updateNoteDto: UpdateNoteDto) {
+  update(id: string, updateNoteDto: UpdateNoteDto) {
     let note: Note = new Note();
-    note.id = updateNoteDto.id;
-    note.title = updateNoteDto.title;
-    note.description = updateNoteDto.description;
-    note.isActive = updateNoteDto.isActive;
+    note.emailAddress = updateNoteDto.emailAddress;
+    note.password = updateNoteDto.password;
     note.id = id;
 
     return this.noteRepository.save(note);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.noteRepository.delete(id);
   }
 }

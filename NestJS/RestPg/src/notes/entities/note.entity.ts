@@ -1,25 +1,26 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity('notes')
-export class Note extends BaseEntity {
-    @PrimaryGeneratedColumn({
-        comment: 'Notes',
-    })
-    id: number;
+@Entity()
+export class Note {
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
-    @Column({
-        type: 'varchar',
-    })
-    title: string;
+    @Column({ name: 'email_address', unique: true })
+    emailAddress: string;
 
-    @Column({
-        type: 'text',
-    })
-    description: string;
+    @Column()
+    password: string;
 
-    @Column({
+    @CreateDateColumn({ 
         type: 'boolean',
-        default: 1,
+        name: 'deleted_at'
     })
-    isActive: boolean;
+    deletedAt: Date;
+
+    @CreateDateColumn({ name: 'created_at' })
+    createdAt: Date;
+
+    @UpdateDateColumn({ name: 'updated_at' })
+    updatedAt: Date;
+
 }
