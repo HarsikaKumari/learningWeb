@@ -24,7 +24,15 @@ let SongsController = class SongsController {
         return this.songsService.create(createSongDto);
     }
     findAll() {
-        return this.songsService.findAll();
+        try {
+            return this.songsService.findAll();
+        }
+        catch (e) {
+            console.log(e);
+            throw new common_1.HttpException("I'am getting an server error", common_1.HttpStatus.INTERNAL_SERVER_ERROR, {
+                cause: e
+            });
+        }
     }
     findOne() {
         return 'Find song based on ID';
