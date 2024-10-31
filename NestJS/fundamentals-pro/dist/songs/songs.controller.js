@@ -34,8 +34,8 @@ let SongsController = class SongsController {
             });
         }
     }
-    findOne() {
-        return 'Find song based on ID';
+    findOne(id) {
+        return `Find song based on ${typeof id}`;
     }
     update() {
         return 'Update song based on ID';
@@ -60,8 +60,9 @@ __decorate([
 ], SongsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id', new common_1.ParseIntPipe({ errorHttpStatusCode: common_1.HttpStatus.NOT_ACCEPTABLE }))),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], SongsController.prototype, "findOne", null);
 __decorate([
