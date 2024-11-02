@@ -5,22 +5,28 @@ import { MiddlewareMiddleware } from './common/middleware/middleware.middleware'
 import { SongsController } from './songs/songs.controller';
 import { SongsService } from './songs/songs.service';
 import { SongsModule } from './songs/songs.module';
+import { connection } from './common/constants/connection';
 
-const mockSongService = {
-  findAll() {
-    return [{ id: 1, title: 'hello uncle', artist: ['Arijit'] }]
-  },
-};
+// const mockSongService = {
+//   findAll() {
+//     return [{ id: 1, title: 'hello uncle', artist: ['Arijit'] }]
+//   },
+// };
 
 @Module({
   imports: [SongsModule],
   controllers: [AppController, SongsController],
   providers: [AppService, 
+    // {
+    //   provide: SongsService,
+    //   // useClass: SongsService,
+    //   useValue: mockSongService,
+    // },
+    SongsService,
     {
-      provide: SongsService,
-      // useClass: SongsService,
-      useValue: mockSongService,
-    },
+      provide: 'CONNECTION',
+      useValue: connection,
+    }
   ],
 })
 export class AppModule implements NestModule {

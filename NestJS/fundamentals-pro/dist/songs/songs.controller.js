@@ -14,11 +14,13 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SongsController = void 0;
 const common_1 = require("@nestjs/common");
-const songs_service_1 = require("./songs.service");
 const Create_song_dto_1 = require("./dto/Create-song-dto");
+const songs_service_1 = require("./songs.service");
 let SongsController = class SongsController {
-    constructor(songsService) {
+    constructor(songsService, connection) {
         this.songsService = songsService;
+        this.connection = connection;
+        console.log(`This is connection String ${this.connection.CONNECTION_STRING}`);
     }
     create(createSongDto) {
         return this.songsService.create(createSongDto);
@@ -79,6 +81,7 @@ __decorate([
 ], SongsController.prototype, "delete", null);
 exports.SongsController = SongsController = __decorate([
     (0, common_1.Controller)('songs'),
-    __metadata("design:paramtypes", [songs_service_1.SongsService])
+    __param(1, (0, common_1.Inject)('CONNECTION')),
+    __metadata("design:paramtypes", [songs_service_1.SongsService, Object])
 ], SongsController);
 //# sourceMappingURL=songs.controller.js.map
