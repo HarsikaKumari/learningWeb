@@ -13,6 +13,12 @@ const app_service_1 = require("./app.service");
 const middleware_middleware_1 = require("./common/middleware/middleware.middleware");
 const songs_controller_1 = require("./songs/songs.controller");
 const songs_service_1 = require("./songs/songs.service");
+const songs_module_1 = require("./songs/songs.module");
+const mockSongService = {
+    findAll() {
+        return [{ id: 1, title: 'hello uncle', artist: ['Arijit'] }];
+    },
+};
 let AppModule = class AppModule {
     configure(consumer) {
         consumer.apply(middleware_middleware_1.MiddlewareMiddleware).forRoutes(songs_controller_1.SongsController);
@@ -21,9 +27,14 @@ let AppModule = class AppModule {
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [songs_module_1.SongsModule],
         controllers: [app_controller_1.AppController, songs_controller_1.SongsController],
-        providers: [app_service_1.AppService, songs_service_1.SongsService],
+        providers: [app_service_1.AppService,
+            {
+                provide: songs_service_1.SongsService,
+                useValue: mockSongService,
+            },
+        ],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
