@@ -129,7 +129,7 @@ function callback() {
 }
 
 const obj = {
-    length: 3,
+    length: 6,
     method() { // argument[callback, 3, 5] and this has a property as length so it would print 3
         arguments[0]();
     }
@@ -138,8 +138,9 @@ const obj = {
 };
 
 obj.method(callback, 3, 4);
-*/
 
+
+/*
 //calc().add(10).subtract(5).multiply(20).divide(2).getResult().In this case, the output should be 50.
 
 const calc = {
@@ -167,3 +168,4 @@ const calc = {
 
 const result = calc.add(10).subtract(5).multiply(20).divide(2).getResult(); // 50
 console.log(result);
+*/
